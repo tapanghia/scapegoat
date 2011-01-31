@@ -26,10 +26,10 @@
 	<parameter name="period" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="semanticMapX" isForPrompting="false" class="java.lang.String">
+	<parameter name="semanticXAxis" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["designValue"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="semanticMapY" isForPrompting="false" class="java.lang.String">
+	<parameter name="semanticYAxis" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["fragranceValue"]]></defaultValueExpression>
 	</parameter>
 	<queryString><![CDATA[select * from rep_brand_map]]></queryString>
@@ -104,7 +104,7 @@
 					<textElement verticalAlignment="Middle">
 						<font size="14" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["X-Axis: " + $P{semanticMapX}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["X-Axis: " + $P{semanticXAxis}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -117,7 +117,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="14" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Y-Axis: " + $P{semanticMapY}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Y-Axis: " + $P{semanticYAxis}]]></textFieldExpression>
 				</textField>
 			</band>
 		</columnHeader>
