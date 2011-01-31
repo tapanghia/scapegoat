@@ -59,7 +59,7 @@ $( "#totcost" ).val(total);
 							<li><a href="reports.htm?reportName=TeamResult">Team Performance</a></li>
 							<li><a href="reports.htm?reportName=BrandResult">Brand Performance</a></li>
 							<li><a href="reports.htm?reportName=StockMarketReport">Stock market</a></li>
-							<li><a href="reports.htm?reportName=RndReport">R&D Report</a></li>
+							<li><a href="reports.htm?reportName=RnDReport">R&D Report</a></li>
 						</ul>
 					</li>
 					<li>

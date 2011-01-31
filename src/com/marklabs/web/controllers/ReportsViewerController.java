@@ -188,6 +188,11 @@ public class ReportsViewerController extends AbstractController{
 						BaseHttpServlet.DEFAULT_JASPER_PRINT_SESSION_ATTRIBUTE,
 						jasperPrint);
 			}
+			else {
+				// Removing Jasper print object from session
+				if (session.getAttribute(BaseHttpServlet.DEFAULT_JASPER_PRINT_SESSION_ATTRIBUTE) != null)
+					session.removeAttribute(BaseHttpServlet.DEFAULT_JASPER_PRINT_SESSION_ATTRIBUTE);
+			}
 			return mav;
 		}
 		
