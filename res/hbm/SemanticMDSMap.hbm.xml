@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.marklabs.perceptualObj.SemanticMDSMap" table="SEMANTIC_MDS_MAP" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="MDSScale" />
+        <property name="DesignEq" type="double"/>
+        <property name="fragranceEq" type="double"/>
+        <property name="persistenceEq" type="double"/>
+        <property name="packagingEq" type="double"/>
+        <property name="safetyEq" type="double"/>
+        <property name="priceEq" type="double"/>
+        
+     </class>
+</hibernate-mapping>

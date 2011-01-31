@@ -1,0 +1,17 @@
+<%--
+
+  This file contains the common import statements required across
+  the JSP pages
+
+  @Author: Tapan
+
+--%>
+
+<%@page import=
+"org.apache.log4j.Logger,
+java.util.ArrayList,
+java.util.StringTokenizer,
+java.util.TreeMap,
+java.util.HashMap,
+java.util.Set,
+java.util.Iterator"%>

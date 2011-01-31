@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.marklabs.marketShare.ChannelAvailability" table="channelavailability" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="supermarketAvailability" column="supermarketAvail" type="double"/>
+        <property name="generalStoreAvailability" column="generalStoreAvail" type="double"/>
+        <property name="kiranaStoreAvailability" column="kiranaStoreAvail" type="double"/>
+        
+        <many-to-one name="brand" class="com.marklabs.brands.Brand" 
+			column="brandId" not-null="true" cascade="all" unique="true" />
+              
+     </class>
+</hibernate-mapping>

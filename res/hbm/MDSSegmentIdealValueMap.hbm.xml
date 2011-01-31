@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+     <class name="com.marklabs.purchaseIntention.MDSSegmentIdealValueMap" 
+     		table="mds_segment_idealvaluemap">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="segment"/>
+        <property name="period" type="integer"/>
+		<property name="economyValue" type="double"/>
+		<property name="qualityValue" type="double"/>
+		<property name="appealValue" type="double"/>
+						
+     </class>
+</hibernate-mapping>
+
+

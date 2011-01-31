@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.marklabs.marketShare.GenStoreSegMarketShare" table="segmentmarketshare_genstore" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="segBlueBloodsMS" column="Seg_BlueBloods_ms" type="double"/>
+        <property name="segRafflesMS" column="Seg_Raffles_ms" type="double"/>
+        <property name="segWannabesMS" column="Seg_Wannabes_ms" type="double"/>
+        <property name="segStrugglersMS" column="Seg_Strugglers_ms" type="double"/>
+        <property name="segDeprivedMS" column="Seg_Deprived_ms" type="double"/>
+        
+         <many-to-one name="brand" class="com.marklabs.brands.Brand" 
+			column="brandId" not-null="true" cascade="all" unique="true" />
+        
+     </class>
+</hibernate-mapping>

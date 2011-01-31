@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.marklabs.utils.SegmentConstants" table="SEGMENT_CONSTANTS" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="period" type="integer"/>
+        <property name="name"/>
+        <property name="segBlueBloods" column="Seg_BlueBloods" type="double"/>
+        <property name="segRaffles" column="Seg_Raffles" type="double"/>
+        <property name="segWannabes" column="Seg_Wannabes" type="double"/>
+        <property name="segStrugglers" column="Seg_Strugglers" type="double"/>
+        <property name="segDeprived" column="Seg_Deprived" type="double"/>
+        
+     </class>
+</hibernate-mapping>

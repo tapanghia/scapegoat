@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+     <class name="com.marklabs.marketResearchStudies.ReportTeamPurchaseMap" table="reports_team_purchase_map">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+		<property name="currentPeriod" column="period" type="integer"/>
+		<property name="accessFlag" column="access_flag"/>
+		<many-to-one name="report" column="report_id" class="com.marklabs.marketResearchStudies.Report"/>
+		<many-to-one name="team" column="team_id" class="com.marklabs.teams.Team"/>
+     </class>
+</hibernate-mapping>
+
+

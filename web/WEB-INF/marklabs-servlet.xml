@@ -1,0 +1,1177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- the application context definition for the marklabs DispatcherServlet -->
+<beans>
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+	</bean>
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>/WEB-INF/classes/resources/ServerConfig.properties</value>
+            </list>
+        </property>
+    </bean>
+
+	<!-- Use this configuration, when running the application with weblogic server -->
+	<!-- 
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" destroy-method="close">
+       <property name="jndiName" value="jndi.name.placeholder"/>
+    </bean>
+	 -->
+	 
+    <bean id="hibernateMappingResources" class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="sourceList">
+            <list>
+                <value>hbm/Team.hbm.xml</value>
+                <value>hbm/ResearchProject.hbm.xml</value>
+                <value>hbm/Brand.hbm.xml</value>
+                <value>hbm/User.hbm.xml</value>
+                <value>hbm/BrandMetadata.hbm.xml</value>
+                <value>hbm/ResearchProjectMetadata.hbm.xml</value>
+                <value>hbm/TeamMetadata.hbm.xml</value>
+                <value>hbm/BrandAdvertisement.hbm.xml</value>
+                <value>hbm/BrandAdvMetadata.hbm.xml</value>
+                <value>hbm/BrandSpecs.hbm.xml</value>
+                <value>hbm/BrandSpecsMetadata.hbm.xml</value>
+                <value>hbm/GlobalConstants.hbm.xml</value>
+                <value>hbm/PeriodConstants.hbm.xml</value>
+                <value>hbm/IAdvEffSegExpense.hbm.xml</value>
+                <value>hbm/IAdvSegExpense.hbm.xml</value>
+                <value>hbm/SegmentConstants.hbm.xml</value>
+                <value>hbm/BrandAwarenessMetadata.hbm.xml</value>
+                <value>hbm/IAdvBrandAwareness.hbm.xml</value>
+                <value>hbm/FMDSValues.hbm.xml</value>
+                <value>hbm/FSemanticValues.hbm.xml</value>
+                <value>hbm/IMDSValues.hbm.xml</value>
+                <value>hbm/ISemanticValues.hbm.xml</value>
+                <value>hbm/PerceptualObj.hbm.xml</value>
+                <value>hbm/SemanticMDSMap.hbm.xml</value>
+                <value>hbm/MDSSegmentRelativeImp.hbm.xml</value>
+                <value>hbm/PurchaseIntention.hbm.xml</value>
+                <value>hbm/PurchaseIntentionChannel.hbm.xml</value>
+                <value>hbm/SemanticSegmentIdealValueMap.hbm.xml</value>
+                <value>hbm/MDSSegmentIdealValueMap.hbm.xml</value>
+                <value>hbm/ChannelConstants.hbm.xml</value>
+                <value>hbm/MarginOffered.hbm.xml</value>
+                <value>hbm/SalesForce.hbm.xml</value>
+                <value>hbm/DistributionCoverage.hbm.xml</value>
+                <value>hbm/SalesForceMetadata.hbm.xml</value>
+                <value>hbm/MarginOfferedMetadata.hbm.xml</value>
+                <value>hbm/ChannelAllocation.hbm.xml</value>
+                <value>hbm/ChannelAvailability.hbm.xml</value>
+                <value>hbm/SuperMarketSegAvailability.hbm.xml</value>
+                <value>hbm/GenStoreSegAvailability.hbm.xml</value>
+                <value>hbm/KiranaStoreSegAvailability.hbm.xml</value>
+                <value>hbm/ChannelMarketShare.hbm.xml</value>
+                <value>hbm/SuperMarketSegMarketShare.hbm.xml</value>
+                <value>hbm/GenStoreSegMarketShare.hbm.xml</value>
+                <value>hbm/KiranaStoreSegMarketShare.hbm.xml</value>
+                <value>hbm/AverageMarginOffered.hbm.xml</value>
+                <value>hbm/ReportsTeamPurchaseMap.hbm.xml</value>
+                <value>hbm/Report.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+
+<!-- Use This configuration, when running the application with Oracle -->
+<!--     
+	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="db.username"/>
+        <property name="password" value="db.password"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean" 
+    depends-on="dataSource">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingResources">
+            <ref bean="hibernateMappingResources" />
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">net.sf.hibernate.dialect.Oracle9Dialect</prop>
+                 <prop key="hibernate.show_sql">false</prop>
+                 <prop key="hibernate.cache.use_query_cache ">false</prop>
+                 <prop key="hibernate.cache.use_minimal_puts">false</prop>
+            </props>
+        </property>
+    </bean>
+ -->
+
+<!-- Use This configuration, when running the application with MySQL -->
+
+	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost/marklabs"/>
+        <property name="username" value="db.username"/>
+        <property name="password" value="db.password"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean" 
+    depends-on="dataSource">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingResources">
+            <ref bean="hibernateMappingResources" />
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">net.sf.hibernate.dialect.MySQLDialect</prop>
+                 <prop key="hibernate.show_sql">false</prop>
+                 <prop key="hibernate.cache.use_query_cache ">false</prop>
+                 <prop key="hibernate.cache.use_minimal_puts">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate.HibernateTransactionManager"
+          depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+	<bean id="teamServiceTarget" class="com.marklabs.teams.TeamService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="teamMetadataService" ref="teamMetadataService"/>
+    </bean>
+
+    <bean id="teamService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="teamServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean id="researchProjectServiceTarget" class="com.marklabs.researchProject.ResearchProjectService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="researchProjectService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="researchProjectServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="create*">PROPAGATION_REQUIRED</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean id="brandServiceTarget" class="com.marklabs.brands.BrandService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="brandService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="brandServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="create*">PROPAGATION_REQUIRED</prop>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="userServiceTarget" class="com.marklabs.user.UserService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="userService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="userServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="create*">PROPAGATION_REQUIRED</prop>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>
+        </property>
+    </bean>
+
+ 	<bean id="teamMetadataServiceTarget" class="com.marklabs.teams.TeamMetadataService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="teamMetadataService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="teamMetadataServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+ 
+ 	<bean id="brandMetadataServiceTarget" class="com.marklabs.brands.BrandMetadataService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="brandMetadataService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="brandMetadataServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+ 
+ 
+ 	<bean id="researchProjectMetadataServiceTarget" 
+ 		class="com.marklabs.researchProject.ResearchProjectMetadataService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="researchProjectService" ref="researchProjectService"/>
+    </bean>
+
+    <bean id="researchProjectMetadataService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="researchProjectMetadataServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="brandAdvMetadataServiceTarget" 
+ 		class="com.marklabs.brandAdvertisement.BrandAdvMetadataService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="brandAdvMetadataService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="brandAdvMetadataServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="brandAdvertisementServiceTarget" 
+ 		class="com.marklabs.brandAdvertisement.BrandAdvertisementService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="brandAdvertisementService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="brandAdvertisementServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+ 
+<bean id="brandSpecsMetadataServiceTarget" 
+ 		class="com.marklabs.brandSpecifications.BrandSpecsMetadataService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="brandSpecsMetadataService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="brandSpecsMetadataServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="brandSpecsServiceTarget" 
+ 		class="com.marklabs.brandSpecifications.BrandSpecsService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="brandSpecsService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="brandSpecsServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+
+ 
+ 	<bean id="brandTransitionServiceTarget" class="com.marklabs.brands.BrandTransitionService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="brandService" ref="brandService"/>
+    </bean>
+
+    <bean id="brandTransitionService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="brandTransitionServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+     <bean id="researchProjectTransitionServiceTarget" 
+     		class="com.marklabs.researchProject.ResearchProjectTransitionService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="researchProjectService" ref="researchProjectService"/>
+        <property name="globalConstantsService" ref="globalConstantsService"/>
+        <property name="brandTransitionService" ref="brandTransitionService"/>
+    </bean>
+
+    <bean id="researchProjectTransitionService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="researchProjectTransitionServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="transition*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="brandAdvTransitionServiceTarget" 
+     		class="com.marklabs.brandAdvertisement.BrandAdvTransitionService" 
+ 			depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="researchProjectService" ref="researchProjectService"/>
+        <property name="brandAdvertisementService" ref="brandAdvertisementService"/>
+        <property name="segmentConstantsService" ref="segmentConstantsService"/>
+        <property name="brandAwarenessMetadataService" ref="brandAwarenessMetadataService"/>
+        <property name="brandService" ref="brandService"/>
+    </bean>
+
+    <bean id="brandAdvTransitionService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="brandAdvTransitionServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="transition*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+    
+    <bean id="prepareDataForPeriod0ServiceTarget" 
+     		class="com.marklabs.prepareDataForPeriod0.PrepareDataForPeriod0Service" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="teamMetadataService" ref="teamMetadataService"/>
+        <property name="brandMetadataService" ref="brandMetadataService"/>
+        <property name="researchProjectMetadataService" ref="researchProjectMetadataService"/>
+        <property name="teamService" ref="teamService"/>
+        <property name="researchProjectService" ref="researchProjectService"/>
+        <property name="brandAdvMetadataService" ref="brandAdvMetadataService"/>
+        <property name="brandAdvertisementService" ref="brandAdvertisementService"/>
+        <property name="brandSpecsMetadataService" ref="brandSpecsMetadataService"/>
+        <property name="brandSpecsService" ref="brandSpecsService"/>
+        <property name="salesForceMetadataService" ref="salesForceMetadataService"/>
+        <property name="salesForceService" ref="salesForceService"/>
+        <property name="marginOfferedMetadataService" ref="marginOfferedMetadataService"/>
+        <property name="marginOfferedService" ref="marginOfferedService"/>
+    </bean>
+
+    <bean id="prepareDataForPeriod0Service" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="prepareDataForPeriod0ServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean id="globalConstantsServiceTarget" 
+     		class="com.marklabs.utils.GlobalConstantsService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="globalConstantsService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="globalConstantsServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean id="channelConstantsServiceTarget" 
+     		class="com.marklabs.utils.ChannelConstantsService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="channelConstantsService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="channelConstantsServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+
+	<bean id="periodConstantsServiceTarget" 
+     		class="com.marklabs.utils.PeriodConstantsService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="periodConstantsService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="periodConstantsServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean id="segmentConstantsServiceTarget" 
+     		class="com.marklabs.utils.SegmentConstantsService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="segmentConstantsService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="segmentConstantsServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="brandAwarenessMetadataServiceTarget" 
+     		class="com.marklabs.brandAdvertisement.BrandAwarenessMetadataService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="brandAwarenessMetadataService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="brandAwarenessMetadataServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="perceptualObjServiceTarget" 
+     		class="com.marklabs.perceptualObj.PerceptualObjService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="perceptualObjService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="perceptualObjServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="semanticValueServiceTarget" 
+     		class="com.marklabs.perceptualObj.SemanticValueService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="semanticValueService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="semanticValueServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="mdsValueServiceTarget" 
+     		class="com.marklabs.perceptualObj.MDSValueService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="mdsValueService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="mdsValueServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="semanticMDSMapServiceTarget" 
+     		class="com.marklabs.perceptualObj.SemanticMDSMapService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="semanticMDSMapService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="semanticMDSMapServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="perceptualObjTransitionServiceTarget" 
+     		class="com.marklabs.perceptualObj.PerceptualObjTransitionService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="researchProjectService" ref="researchProjectService"/>
+        <property name="brandSpecsService" ref="brandSpecsService"/>
+        <property name="semanticValueService" ref="semanticValueService"/>
+        <property name="brandAdvertisementService" ref="brandAdvertisementService"/>
+        <property name="perceptualObjService" ref="perceptualObjService"/>
+        <property name="semanticMDSMapService" ref="semanticMDSMapService"/>
+        <property name="mdsValueService" ref="mdsValueService"/>
+    </bean>
+
+    <bean id="perceptualObjTransitionService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="perceptualObjTransitionServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="purchaseIntentionTransitionServiceTarget" 
+     		class="com.marklabs.purchaseIntention.PurchaseIntentionTransitionService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="researchProjectService" ref="researchProjectService"/>
+        <property name="globalConstantsService" ref="globalConstantsService"/>
+        <property name="purchaseIntentionConstantService" ref="purchaseIntentionConstantService"/>
+        <property name="mdsValueService" ref="mdsValueService"/>
+        <property name="brandAdvertisementService" ref="brandAdvertisementService"/>
+        <property name="purchaseIntentionService" ref="purchaseIntentionService"/>
+        <property name="segmentConstantsService" ref="segmentConstantsService"/>
+    </bean>
+
+    <bean id="purchaseIntentionTransitionService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="purchaseIntentionTransitionServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean id="purchaseIntentionServiceTarget" 
+     		class="com.marklabs.purchaseIntention.PurchaseIntentionService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="purchaseIntentionService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="purchaseIntentionServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean id="purchaseIntentionConstantServiceTarget" 
+     		class="com.marklabs.purchaseIntention.PurchaseIntentionConstantService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="purchaseIntentionConstantService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="purchaseIntentionConstantServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+	<!-- Beans for Distribution Coverage -->
+	
+	<bean id="distributionCoverageServiceTarget" 
+     		class="com.marklabs.distributionCoverage.DistributionCoverageService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="distributionCoverageService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="distributionCoverageServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="distributionCoverageTransitionServiceTarget" 
+     		class="com.marklabs.distributionCoverage.DistributionCoverageTransitionService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="researchProjectService" ref="researchProjectService"/>
+        <property name="purchaseIntentionService" ref="purchaseIntentionService"/>
+        <property name="channelConstantsService" ref="channelConstantsService"/>
+        <property name="salesForceService" ref="salesForceService"/>
+        <property name="marginOfferedService" ref="marginOfferedService"/>
+        <property name="distributionCoverageService" ref="distributionCoverageService"/>
+    </bean>
+
+    <bean id="distributionCoverageTransitionService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="distributionCoverageTransitionServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="marginOfferedServiceTarget" 
+     		class="com.marklabs.distributionCoverage.MarginOfferedService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="marginOfferedService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="marginOfferedServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="salesForceServiceTarget" 
+     		class="com.marklabs.distributionCoverage.SalesForceService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="salesForceService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="salesForceServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="salesForceMetadataServiceTarget" 
+     		class="com.marklabs.distributionCoverage.SalesForceMetadataService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="salesForceMetadataService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="salesForceMetadataServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="marginOfferedMetadataServiceTarget" 
+     		class="com.marklabs.distributionCoverage.MarginOfferedMetadataService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="marginOfferedMetadataService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="marginOfferedMetadataServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+	
+	<!-- Service Beans for Market Share -->
+	
+	<bean id="marketShareServiceTarget" 
+     		class="com.marklabs.marketShare.MarketShareService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="marketShareService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="marketShareServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="marketShareTransitionServiceTarget" 
+     		class="com.marklabs.marketShare.MarketShareTransitionService" 
+ 		depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="researchProjectService" ref="researchProjectService"/>
+        <property name="marketShareService" ref="marketShareService"/>
+        <property name="salesForceService" ref="salesForceService"/>
+        <property name="brandSpecsService" ref="brandSpecsService"/>
+        <property name="distributionCoverageService" ref="distributionCoverageService"/>
+        <property name="channelConstantsService" ref="channelConstantsService"/>
+        <property name="segmentConstantsService" ref="segmentConstantsService"/>
+        <property name="purchaseIntentionService" ref="purchaseIntentionService"/>
+        <property name="brandAdvertisementService" ref="brandAdvertisementService"/>
+    </bean>
+
+    <bean id="marketShareTransitionService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="marketShareTransitionServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="reportsServiceTarget" 
+     		class="com.marklabs.reports.ReportService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="reportsService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="reportsServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="marketResearchStudiesServiceTarget" 
+     		class="com.marklabs.marketResearchStudies.MarketResearchStudiesService" depends-on="sessionFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="marketResearchStudiesService" 
+    	class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="target" ref="marketResearchStudiesServiceTarget"/>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<!-- ========================= CONTROLLER DEFINITIONS ========================= -->
+
+	<!--  the url mapping handler -->
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/login.htm">loginController</prop>
+				<prop key="/researchProject.htm">researchProjectController</prop>
+				<prop key="/admin.htm">loginController</prop>
+				<prop key="/team.htm">teamController</prop>
+				<prop key="/periodTransition.htm">periodTransitionController</prop>
+				<prop key="/teamHome.htm">teamHomeController</prop>
+				<prop key="/change_password.htm">changePasswordController</prop>
+				<prop key="/marketingTeam.htm">marketingTeamController</prop>
+				<prop key="/salesTeam.htm">salesTeamController</prop>
+				<prop key="/intelligenceTeam.htm">intelligenceTeamController</prop>
+				<prop key="/boardRoom.htm">boardRoomController</prop>
+				<prop key="/brandManagement.htm">brandManagementController</prop>
+				<prop key="/productionPricing.htm">prodPricingController</prop>
+				<prop key="/brandAdvertisement.htm">brandAdvController</prop>
+				<prop key="/reports.htm">reportsController</prop>
+				<prop key="/reportsViewer.htm">reportsViewerController</prop>				
+			</props>
+		</property>
+		<property name="alwaysUseFullPath" value="true" />
+	</bean>
+
+	<!-- welcomePage Controller -->
+	<bean id="loginController" class="com.marklabs.web.controllers.LoginController">
+		<property name="teamService" ref="teamService"/>
+		<property name="userService" ref="userService"/>
+		<property name="globalConstantsService" ref="globalConstantsService"/>
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+
+	<!--
+		The research project controller
+		This bean is a MultiActionController that manages general View rendering.
+		It uses the "parameterMethodNameResolver" bean below for method name resolution.
+	 -->
+	<bean id="researchProjectController" class="com.marklabs.web.controllers.ResearchProjectController">
+		<property name="researchProjectService" ref="researchProjectService"/>
+		<property name="researchProjectMetadataService" ref="researchProjectMetadataService"/>
+		<property name="teamService" ref="teamService"/>
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="teamController" class="com.marklabs.web.controllers.TeamController">
+		<property name="teamService" ref="teamService"/>
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+	
+	
+	<bean id="periodTransitionController" class="com.marklabs.web.controllers.PeriodTransitionController">
+		<property name="prepareDataForPeriod0Service" ref="prepareDataForPeriod0Service"/>
+		<property name="researchProjectTransitionService" ref="researchProjectTransitionService"/>
+		<property name="teamService" ref="teamService"/>
+		<property name="globalConstantsService" ref="globalConstantsService"/>
+		<property name="brandAdvTransitionService" ref="brandAdvTransitionService"/>
+		<property name="perceptualObjTransitionService" ref="perceptualObjTransitionService"/>
+		<property name="purchaseIntentionTransitionService" ref="purchaseIntentionTransitionService"/>
+		<property name="distributionCoverageTransitionService" ref="distributionCoverageTransitionService"/>
+		<property name="marketShareTransitionService" ref="marketShareTransitionService"/>
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>	
+	
+	
+	<bean id="teamHomeController" class="com.marklabs.web.controllers.TeamHomeController">
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="changePasswordController" class="com.marklabs.web.controllers.ChangePasswordController">
+		<property name="teamService" ref="teamService"/>
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="marketingTeamController" class="com.marklabs.web.controllers.MarketingTeamController">
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="salesTeamController" class="com.marklabs.web.controllers.SalesTeamController">
+		<property name="brandService" ref="brandService"/>
+		<property name="marginOfferedService" ref="marginOfferedService"/>
+		<property name="salesForceService" ref="salesForceService"/>
+		<property name="teamService" ref="teamService"/>
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="intelligenceTeamController" class="com.marklabs.web.controllers.IntelligenceTeamController">
+		<property name="marketResearchStudiesService" ref="marketResearchStudiesService"/>
+		<property name="teamService" ref="teamService"/>
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="boardRoomController" class="com.marklabs.web.controllers.BoardRoomController">
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="brandManagementController" class="com.marklabs.web.controllers.BrandManagementController">
+		<property name="brandService" ref="brandService"/>
+		<property name="researchProjectService" ref="researchProjectService"/>
+		<property name="brandSpecsService" ref="brandSpecsService"/>
+		<property name="brandAdvertisementService" ref="brandAdvertisementService"/>
+		<property name="salesForceService" ref="salesForceService"/>
+		<property name="marginOfferedService" ref="marginOfferedService"/>
+		<property name="perceptualObjService" ref="perceptualObjService"/>
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="prodPricingController" class="com.marklabs.web.controllers.ProdPricingController">
+		<property name="brandService" ref="brandService"/>
+		<property name="brandSpecsService" ref="brandSpecsService"/>
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="brandAdvController" class="com.marklabs.web.controllers.BrandAdvController">
+		<property name="brandService" ref="brandService"/>
+		<property name="brandAdvertisementService" ref="brandAdvertisementService"/>
+		<property name="perceptualObjService" ref="perceptualObjService"/>
+		<property name="teamService" ref="teamService"/>
+		<property name="methodNameResolver">
+			<bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+				<property name="paramName"><value>do</value></property>
+				<property name="defaultMethodName"><value>index</value></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="reportsController" class="com.marklabs.web.controllers.ReportsController">
+		<property name="reportsService" ref="reportsService"/>
+	</bean>
+	
+	<bean id="reportsViewerController" class="com.marklabs.web.controllers.ReportsViewerController">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="marketResearchStudiesService" ref="marketResearchStudiesService"/>
+	</bean>
+	
+</beans>

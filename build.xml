@@ -1,0 +1,87 @@
+<project name="marklabs" basedir="." default="compile">
+	<property environment="env"/>
+	<property file="build.properties" />
+
+	<property name="src" value="${basedir}/src"/>
+	<property name="web" value="${basedir}/web"/>
+	<property name="lib" value="${web}/WEB-INF/lib"/>
+	<property name="webinf" value="${web}/WEB-INF"/>
+	<property name="reports" value="${basedir}/reports"></property>
+
+	<property name="output" value="${basedir}/output"/>
+	<property name="webapp" value="${output}/${war.file.name}"/>
+	<property name="output-webinf" value="${webapp}/WEB-INF"/>
+	<property name="classes" value="${output-webinf}/classes"/>
+	<property name="resources" value="${classes}/resources"/>
+	<property name="output-lib" value="${output-webinf}/lib"/>
+	<property name="res" value="${basedir}/res"/>
+	<property name="reportsOut" value="${webapp}/reports"></property>
+
+
+	<path id="libraries">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init">
+		<mkdir dir="${webapp}" />
+		<mkdir dir="${output-webinf}" />
+		<mkdir dir="${classes}" />
+		<mkdir dir="${reportsOut}"/>
+	</target>
+
+    <target name="clean">
+        <delete dir="${webapp}"/>
+    </target>
+
+	<target name="copy-resources">
+		<copy todir="${webapp}">
+		  <fileset dir="${web}">
+		  </fileset>
+		</copy>
+		<copy todir="${classes}">
+		  <fileset dir="${res}">
+		  </fileset>
+		</copy>
+		<copy todir="${reportsOut}">
+			<fileset dir="${reports}"/>
+		</copy>
+		<replaceregexp match="db.username" replace="${db.username}" byline="true">
+		          <fileset dir="${output-webinf}" includes="marklabs-servlet.xml" />
+		</replaceregexp>
+		<replaceregexp match="db.password" replace="${db.password}" byline="true">
+		          <fileset dir="${output-webinf}" includes="marklabs-servlet.xml" />
+		</replaceregexp>
+		<replaceregexp match="welcome.file.placeholder" replace="${welcome.file.placeholder}" byline="true">
+				  <fileset dir="${output-webinf}" includes="web.xml" />
+		</replaceregexp>
+		<replaceregexp match="jndi.name.placeholder" replace="${jndi.name.placeholder}" byline="true">
+				  <fileset dir="${output-webinf}" includes="marklabs-servlet.xml" />
+		</replaceregexp>
+		<replaceregexp match="jndi.name.placeholder" replace="${jndi.name.placeholder}" byline="true">
+				  <fileset dir="${resources}" includes="ServerConfig.properties" />
+		</replaceregexp>
+	</target>
+	
+	
+	<target name="compile" depends="clean, init, copy-resources">
+		<javac srcdir="${src}" 
+			   destdir="${classes}" 
+			   classpathref="libraries" 
+			   debug="true" />
+	</target>
+
+	<target name="compile-only">
+		<delete dir="${classes}" />
+		<mkdir dir="${classes}" />
+		<javac srcdir="${src}" 
+			   destdir="${classes}" 
+			   classpathref="libraries" 
+			   debug="true" />
+	</target>
+
+
+</project>
+
+

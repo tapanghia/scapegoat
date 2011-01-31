@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+     <class name="com.marklabs.brandSpecifications.BrandSpecsMetadata" table="brandspecsmetadata">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+		<property name="brandName"/>
+		<property name="productionLevel" type="long"/>
+		<property name="inventorySold" type="long"/>
+		<property name="currentInventory" type="long"/>
+		<property name="retailPrice" type="long"/>
+		
+     </class>
+</hibernate-mapping>
+
+

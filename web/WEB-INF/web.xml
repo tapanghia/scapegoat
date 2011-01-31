@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+	<servlet>
+		<servlet-name>marklabs</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>marklabs</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	  <servlet-name>ImageServlet</servlet-name>
+	  <servlet-class>net.sf.jasperreports.j2ee.servlets.ImageServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	  <servlet-name>ImageServlet</servlet-name>
+	  <url-pattern>/imageServlet</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>welcome.file.placeholder</welcome-file>
+	</welcome-file-list>
+	
+	<filter>
+	    <filter-name>sessionExpirationFilter</filter-name>
+		<description>This Filter redirects the user to an error page on session expiration</description>
+		<filter-class>com.marklabs.web.filter.SessionExpirationFilter</filter-class>
+	    <init-param>
+	        <param-name>errorPage</param-name>
+	        <param-value>sessionexpired.jsp</param-value>
+	        <description>Page to show when session expires</description>
+	    </init-param>
+	    <init-param>
+	        <param-name>excludePages</param-name>
+	        <param-value>/login.htm</param-value>
+	        <description>Page to exclude from the filter</description>
+	    </init-param>
+  	</filter>
+  	
+  	<filter-mapping>
+	    <filter-name>sessionExpirationFilter</filter-name>
+	    <url-pattern>*.htm</url-pattern>
+  	</filter-mapping>
+	
+	<!-- UTF-8 charcter encoding -->
+  	<filter> 
+		<filter-name>characterEncoding</filter-name> 
+		<filter-class>com.marklabs.web.filter.CharacterEncodingFilter</filter-class> 
+  	</filter>
+
+  	<filter-mapping> 
+		<filter-name>characterEncoding</filter-name> 
+		<url-pattern>*.htm</url-pattern> 
+  	</filter-mapping> 
+  	<filter-mapping> 
+	 	<filter-name>characterEncoding</filter-name> 
+		<url-pattern>*.jsp</url-pattern> 
+  	</filter-mapping>
+  
+	<session-config>
+    	<session-timeout>120</session-timeout>
+    </session-config>
+	
+</web-app>

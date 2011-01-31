@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+     <class name="com.marklabs.marketResearchStudies.Report" table="reports">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="reportAppName" column="report_app_name"/>
+		<property name="reportName" column="report_name"/>
+		<property name="reportCost" column="report_cost" type="double"/>	
+		<property name="period" type="integer"/>
+     </class>
+</hibernate-mapping>
+
+

@@ -1,0 +1,72 @@
+MetaData required for initializing game at Period 0
+1. team_metadata --
+2. researchproject_metadata --
+3. brands_metadata --
+4. brandadv_metadata --
+5. brandspecsmetadata --
+6. brandawareness_metadata --
+7. salesforce_metadata --
+8. marginOffered_metadata --
+
+User Input data tables:
+1. user_table --
+2. teams --
+3. researchproject --
+4. perceptualobj --
+5. brandspecs --
+6. brands --
+7. brandadvertisement --
+8. SalesForce --
+9. MarginOffered --
+
+Constants Table:
+1. semantic_mds_map --
+2. segment_constants --
+3. period_constants --
+4. global_constants --
+5. semantic_segment_idealvaluemap --
+6. mds_segment_idealvaluemap --
+7. mds_segment_relativeimp --
+8. channel_constants --
+
+Intermediate Tables:
+1. isemanticvalues --
+2. imdsvalues --
+3. iadv_segmentexpense --
+4. iadv_effectivesegexpense --
+5. iadv_brandawareness --
+6. fsemanticvalues --
+7. fmdsvalues --
+8. purchaseintention_brand --
+9. purchaseIntention_channel --
+10. channelAllocation --
+11. channelAvailability --
+12. distributionCoverage --
+13. segmentavailability_genstore  --
+14. segmentavailability_kiranastore --
+15. segmentavailability_supermarket --
+16. channelMarketShare --
+17. segmentMarketShare_supermarket --
+18. segmentMarketShare_genStore --
+19. segmentMarketShare_kiranaStore -- 
+
+
+-------------------------------------------------------------
+
+Required tables: (with data to begin)
+1. team_metadata
+2. researchproject_metadata
+3. brands_metadata
+4. brandadv_metadata
+5. brandspecsmetadata
+6. semantic_mds_map -- constants
+7. segment_constants -- constants
+8. period_constants -- constants
+9. global_constants -- constants
+10. brandawareness_metadata
+11. semantic_segment_idealvaluemap -- constants
+12. mds_segment_idealvaluemap -- constants
+13. mds_segment_relativeimp -- constants
+14. Channel_Constants -- constants
+15. salesforce_metadata -- constants
+16. marginOffered_metadata

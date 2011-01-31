@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+     <class name="com.marklabs.teams.Team" table="teams">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+		<property name="teamName"/>
+		<property name="teamUserName"/>
+		<property name="teamPassword"/>
+		<property name="currentTeamPeriod" type="integer"/>
+		<property name="teamCurrentPeriodBudget" column="budget" type="long" />
+		<set name="researchProjects" inverse="true" cascade="all" lazy="true">
+			<key column="teamID"/>
+			<one-to-many class="com.marklabs.researchProject.ResearchProject"/>
+		</set>	
+     </class>
+</hibernate-mapping>
+
+

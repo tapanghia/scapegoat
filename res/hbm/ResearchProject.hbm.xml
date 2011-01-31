@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+     <class name="com.marklabs.researchProject.ResearchProject" table="researchproject">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+		<property name="projectName"/>
+		<property name="design" type="integer"/>
+		<property name="fragrance" type="integer"/>
+		<property name="persistence" type="integer"/>
+		<property name="packaging" type="integer"/>
+		<property name="safety" type="integer"/>
+		<property name="minimumBaseCost" type="long"/>
+		<property name="requestedBaseCost" type="long"/>
+		<property name="requiredBudgetAtMinBC" type="long"/>
+		<property name="requiredBudgetAtReqBC" type="long"/>
+		<property name="allocatedBudget" type="long"/>
+		<property name="currentPeriod" type="integer"/>
+		<property name="isAvailable"/>
+		<property name="budgetDeficit" type="long"/>
+		<property name="projectFinishPeriod" type="integer"/>
+			
+		<many-to-one name="team" column="teamID" 
+		class="com.marklabs.teams.Team" not-null="true"/>
+		
+		<set name="brands" cascade="all" lazy="false" inverse="true">
+			<key column="researchProjectID"/>
+			<one-to-many class="com.marklabs.brands.Brand"/>
+		</set>
+
+     </class>
+</hibernate-mapping>
+
+

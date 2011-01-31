@@ -1,0 +1,34 @@
+<%@include file = "headers.jspf"%>
+<%
+
+  // The base URL
+  final String BASE_URL =
+    request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+
+  final String URL = BASE_URL;
+
+  // get the Context Path
+  final String CONTEXTPATH = request.getContextPath();
+
+  // get the Context Path
+  final String CONTEXT_URL = BASE_URL + CONTEXTPATH;
+
+  // get the action path
+  final String CONTEXT_ACTION = CONTEXTPATH + "/action";
+
+  // Represents path for common CSS files
+  final String COMMONCSS = CONTEXTPATH + "/css";
+
+  // Represents path for common JS files
+  final String COMMONJS = CONTEXTPATH + "/js";
+  
+  // Represents path for common JSP files
+  final String COMMONJSP = CONTEXTPATH + "/jsp";
+
+  // Represents path for common Image files
+  final String COMMONIMAGES = CONTEXTPATH + "/images";
+
+  // Represents path for common Include files
+  final String COMMONINCLUDES = CONTEXTPATH + "/includes";
+%>
+

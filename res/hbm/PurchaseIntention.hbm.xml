@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.marklabs.purchaseIntention.PurchaseIntention" table="purchaseintention_brand" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="bluebloods_pi" type="double"/>
+        <property name="raffles_pi" type="double"/>
+        <property name="wannabes_pi" type="double"/>
+        <property name="strugglers_pi" type="double"/>
+        <property name="deprived_pi" type="double"/>
+        
+        <many-to-one name="brand" class="com.marklabs.brands.Brand" 
+			column="brandId" not-null="true" cascade="all" unique="true" />
+        
+     </class>
+</hibernate-mapping>

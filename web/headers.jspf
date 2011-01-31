@@ -1,0 +1,6 @@
+<%
+// this prevents caching of jsp, jspf in NS and IE
+response.setHeader("Cache-Control", "no-cache, post-check=0, pre-check=0");
+response.setHeader("Pragma", "no-cache");
+response.setHeader("Expires", "0");
+%>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.marklabs.brandAdvertisement.IAdvSegExpense" table="iadv_segmentexpense" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="totalAdvExpense" type="long"/>
+        <property name="bluebloods_SegExp" type="long"/>
+        <property name="raffles_SegExp" type="long"/>
+        <property name="wannabes_SegExp" type="long"/>
+        <property name="strugglers_SegExp" type="long"/>
+        <property name="deprived_SegExp" type="long"/>
+        
+        <many-to-one name="brand" class="com.marklabs.brands.Brand" 
+			column="brandId" not-null="true" cascade="all" unique="true" />
+        
+     </class>
+</hibernate-mapping>

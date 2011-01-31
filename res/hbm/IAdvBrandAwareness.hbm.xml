@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.marklabs.brandAdvertisement.IAdvBrandAwareness" table="iadv_brandawareness" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="totalBrandAwareness" column="total_ba" type="double"/>
+        <property name="bluebloods_BrandAwareness" column="bluebloods_ba" type="double"/>
+        <property name="raffles_BrandAwareness" column="raffles_ba" type="double"/>
+        <property name="wannabes_BrandAwareness" column="wannabes_ba" type="double"/>
+        <property name="strugglers_BrandAwareness" column="strugglers_ba" type="double"/>
+        <property name="deprived_BrandAwareness" column="deprived_ba" type="double"/>
+        
+        <many-to-one name="brand" class="com.marklabs.brands.Brand" 
+			column="brandId" not-null="true" cascade="all" unique="true" />
+        
+     </class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.marklabs.utils.PeriodConstants" table="PERIOD_CONSTANTS" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="period" type="integer"/>
+        <property name="name"/>
+        <property name="value"/>
+     </class>
+</hibernate-mapping>

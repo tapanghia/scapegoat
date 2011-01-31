@@ -1,0 +1,92 @@
+1. Added new column 'budget' to the teams table.
+2. Added a new tabe for Average Margin Offered. 
+3. Added a new table Reports (Intelligence Team --> Conduct Market Research )
+create table reports (
+id int not null auto_increment,
+report_name varchar(255) not null,
+report_cost float(10, 4) not null,
+constraint reports_pk primary key (id)
+);
+
+4. Added a new table reports_team_purchase_map to keep track of the purchase of reports/team/period
+create table reports_team_purchase_map (
+id int not null auto_increment,
+report_id int not null,
+team_id int not null,
+period int not null,
+access_flag varchar(255) not null,
+constraint report_team_purchase_pk primary key (id),
+constraint report_purchase_reportId_fk foreign key(report_id) references reports(id),
+constraint report_purchase_teamId_fk foreign key(team_id) references teams(id)
+);
+
+-- inserting into Reports table, entries for all the reports
+ 
+insert into reports (report_name, report_cost) values ('Project Characteristics', 100);
+insert into reports (report_name, report_cost) values ('Brand Characteristics', 100);
+insert into reports (report_name, report_cost) values ('Brand Awareness', 100);
+insert into reports (report_name, report_cost) values ('Brand Purchase Intention', 100);
+insert into reports (report_name, report_cost) values ('Market Share', 100);
+insert into reports (report_name, report_cost) values ('Co-Joint Analysis', 100);
+insert into reports (report_name, report_cost) values ('Multi Dimensional Scale', 100);
+insert into reports (report_name, report_cost) values ('Competitive Advertisement Expense', 100);
+insert into reports (report_name, report_cost) values ('Shopping Habits', 100);
+insert into reports (report_name, report_cost) values ('Distribution Coverage', 100);
+insert into reports (report_name, report_cost) values ('Distribution Market Share', 100);
+insert into reports (report_name, report_cost) values ('Competitive Sales Force', 100);
+
+
+5. the reports_team_purchase_map table has to be populated while transition to a new period in prior to the team logging in to play in a new Period.
+During the transition to the new period, set all the access flags to false for the new period. So that the user can come to the 
+Intelligence Team --> Market Research Studies Page and buy desired Reports.
+
+For now use these insert queries for testing:
+** Ashish needs to add this to his functions, such that for every Transition, this mapping for every team getting copied/created with 'false' Access Flag
+
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (1, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (2, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (3, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (4, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (5, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (6, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (7, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (8, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (9, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (10, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (11, 1, 1, 'false');
+insert into reports_team_purchase_map(report_id, team_id, period, access_flag) values (12, 1, 1, 'false');
+
+
+
+6. Added a new column, period to the reports table, to record report cost separately for each period.
+alter table reports add period int not null;
+
+7. New Brand Result table for Reports
+create table brand_result (id int auto_increment, period int not null, brand_name varchar(50) not null, base_rnd_name varchar(50),
+ave_retail_price float(10,4), revenues float(10,4), units_produced int, transfer_price float(10,4), cost_of_goods_sold float(10,4),
+units_in_inventory int, inventory_holding_cost float(10,4), disposal_loss float(10,4), contribution_before_marketing float(10,4),
+adv_expense float(10,4), adv_research_expense float(10,4), sales_force_expense float(10,4), contributing_after_marketing float(10,4), constraint brandresult_pk primary key(id));
+
+
+create table team_result (id int auto_increment, period int not null, team_name varchar(50) not null, team_id int, units_sold int, revenues float(10,4), units_produced int, transfer_price float(10,4), cost_of_goods_sold float(10,4),
+units_in_inventory int, inventory_holding_cost float(10,4), disposal_loss float(10,4), contribution_before_marketing float(10,4),
+adv_expense float(10,4), adv_research_expense float(10,4), sales_force_expense float(10,4), contributing_after_marketing float(10,4), market_research_expense float(10,4), rnD_expense float(10,4), net_contribution float(10,4), constraint teamresult_pk primary key(id), constraint team_result_fk foreign key(team_id) references team(id));
+
+
+--------------------
+
+create table rep_brand_map (
+id int not null auto_increment,
+period int not null, team_name varchar(255), brand_name varchar(255), design float, fragrance float, persistence float, packaging float, safety float, price float, constraint rep_brandmap_pk primary key(id))
+
+create table rep_perceptual_map (
+id int not null auto_increment,
+period int not null, team_name varchar(255), brand_name varchar(255), economy float, quality float, appeal float, constraint rep_perceptualmap_pk primary key(id))
+
+
+
+
+update reports set report_app_name = 'RnDReport' where report_name = 'Project Characteristics'
+update reports set report_app_name = 'BrandCharacteristicReport' where report_name = 'Brand Characteristics'
+update reports set report_app_name = 'BrandAwarenessReport' where report_name = 'Brand Awareness'
+update reports set report_app_name = 'BrandPurchaseIntentionReport' where report_name = 'Brand Purchase Intention'

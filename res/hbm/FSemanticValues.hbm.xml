@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+     <class name="com.marklabs.perceptualObj.FSemanticValues" table="FSemanticValues">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+		<property name="designValue" type="double"/>
+		<property name="fragranceValue" type="double"/>
+		<property name="persistenceValue" type="double"/>
+		<property name="packagingValue" type="double"/>
+		<property name="safetyValue" type="double"/>
+		<property name="price" type="double"/>
+				
+		<many-to-one name="brand" class="com.marklabs.brands.Brand" 
+			column="brandId" not-null="true" cascade="all" unique="true" />
+     </class>
+</hibernate-mapping>
+
+

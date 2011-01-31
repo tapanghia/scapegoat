@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.marklabs.distributionCoverage.SalesForceMetadata" table="salesforce_metadata" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="brandName"/>
+        <property name="supermarket_sf" type="double"/>
+        <property name="generalStore_sf" type="double"/>
+        <property name="kiranaStore_sf" type="double"/>
+             
+     </class>
+</hibernate-mapping>

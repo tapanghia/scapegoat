@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+     <class name="com.marklabs.brandAdvertisement.BrandAdvMetadata" table="brandadv_metadata">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+		<property name="brandName"/>
+		<property name="advMediabudget" column="adv_media_budget" type="long"/>
+		<property name="advResearchBudget" column="adv_research_budget" type="long"/>
+		<property name="segBlueBloods" column="Seg_Blueblood_pr" type="integer"/>
+		<property name="segRaffles" column="Seg_raffles_pr" type="integer"/>
+		<property name="segWannabees" column="Seg_wannabees_pr" type="integer"/>
+		<property name="segStrugglers" column="Seg_strugglers_pr" type="integer"/>
+		<property name="segDeprived" column="Seg_deprived_pr" type="integer"/>
+		<property name="mediumPrint" column="Med_print_pr" type="integer"/>
+		<property name="mediumTelevision" column="Med_television_pr" type="integer"/>
+		<property name="mediumRadio" column="med_radio_pr" type="integer"/>
+		<property name="mediumInternet" column="med_internet_pr" type="integer"/>
+		
+     </class>
+</hibernate-mapping>
+
+

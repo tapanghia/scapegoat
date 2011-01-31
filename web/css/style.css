@@ -1,0 +1,503 @@
+.clear {
+	clear: both;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.red {
+	color: #EA423C;
+}
+
+.horznav ul li {
+	padding: 0 5px;
+	display: inline;
+	margin-bottom: 10px;
+}
+
+ul.topnav,
+ul.usernav {
+	font-weight: bold;
+	height: 26px;
+	padding: 6px 10px;
+	margin-bottom: 10px;
+	position: relative;
+	background-color: #E5F8FF;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	border-bottom-left-radius: 5px 5px;
+}
+
+ul.usernav li {
+	border-right: 1px #e0e0e0 solid;
+}
+
+ul.usernav li a {
+	color: #4183C4;
+	font-size: 12px;
+	text-shadow: #FFF 1px 1px 0;
+}
+
+ul.usernav li a:hover {
+	text-decoration: underline;
+}
+
+ul.usernav li.last {
+	border-right: none;
+}
+
+ul.topnav {
+	padding: 6px 10px;
+	margin: 20px 0 40px 0;
+	border: 1px solid #DDD;
+	background-color: #e0e0e0;
+}
+
+ul.topnav li a {
+	float: left;
+	margin-right: 10px;
+	height: 26px;
+	padding: 0px 25px;
+	line-height: 26px;
+	font-size: 14px;
+	color: #666;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-top-left-radius: 4px 4px;
+	border-top-right-radius: 4px 4px;
+	border-bottom-right-radius: 4px 4px;
+	border-bottom-left-radius: 4px 4px;
+}
+
+ul.topnav li a:hover {
+	color: #000000;
+}
+
+body.home ul.topnav li a.home,
+body.researchproject ul.topnav li a.researchproject,
+body.marketing ul.topnav li a.marketing,
+body.sales ul.topnav li a.sales,
+body.intelligence ul.topnav li a.intelligence,
+body.boardroom ul.topnav li a.boardroom {
+	position: relative;
+	top: -1px;
+	font-weight: bold;
+	color: #333;
+	background: white;
+	border: 1px solid #CCC;
+	border-right-color: #EEE;
+	border-bottom-color: #EEE;
+
+}
+
+.footer {
+	color: #666666;
+	margin: 50px 0;
+	padding: 45px 10px;
+	background: #F5F5F5;
+	border-top: 1px solid #E5E5E5;
+}
+
+ul.leftNavigation {
+	padding: 0px 0px 5px 0px;
+	background: url(../images/leftNav_bg.jpg) no-repeat left bottom;
+}
+
+ul.leftNavigation li {
+	display: block;
+	padding: 0px 4px;
+}
+
+ul.leftNavigation li a:hover,ul.leftNavigation li a.select,ul.leftNavigation li.big a.select
+	{
+	color: #FFEA00;
+}
+
+ul.leftNavigation li a {
+	display: block;
+	margin: 0px;
+	padding: 5px 10px;
+	overflow: hidden;
+	color: #FFFFFF;
+	font-size: 13px;
+	font-weight: bold;
+	text-decoration: none;
+	border-top: 1px solid #5CA7CF;
+	background: url(../images/arrowWhite.gif) no-repeat 95% 11px;
+}
+
+ul.leftNavigation li.first {
+	background: url(../images/leftNav_bg.jpg) no-repeat;
+	padding-top: 5px;
+}
+
+ul.leftNavigation li.first a {
+	border: none;
+}
+
+ul.leftNavigation li.firstbig {
+	padding-top: 5px;
+	background: url(../images/leftNav_bg.jpg) no-repeat;
+}
+
+ul.leftNavigation li.firstbig a {
+	border: none;
+}
+
+ul.leftNavigation li.submenu a {
+	background: url(../images/arrowRed_down.gif) no-repeat 95% 11px;
+}
+
+ul.highlights li {
+	color: #0083C3;
+	font-weight: bold;
+	padding: 4px 0px 4px 30px;
+	background: url(../images/arrowRed.gif) no-repeat 15px 50%;
+}
+
+div.loginbox {
+	padding: 25px 50px;
+	margin: 100px 0 100px 200px;
+	border: 8px #e0e0e0 solid;
+}
+
+div.loginbox div {
+	margin: 20px 0;
+}
+
+div.loginbox div.actions a {
+	padding: 5px;
+	text-transform: lowercase;
+}
+
+div.loginbox div.actions a:hover {
+	text-decoration: underline;
+}
+
+div.loginbox input {
+	padding: 5px;
+	border: 2px #e0e0e0 solid;
+}
+
+div.loginbox input[type=submit] {
+	cursor: pointer;
+	margin-top: 10px;
+	padding: 10px 15px;
+	border: 2px #e0e0e0 solid;
+}
+
+.normal {
+	font-size: 14px;
+	color: #666666;
+	font-size-adjust: none;
+	font-variant: normal;
+	line-height: normal;
+	text-transform: none;
+}
+
+.leftheading {
+	color: #EA463F;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 10px 0 5px 0;
+	padding: 10px 0px 10px 15px;
+	background: #F5F5F5;
+}
+
+.blueHeading {
+	color: #007FC1;
+	font-weight: bold;
+}
+
+.subHeading {
+	color: #007FC1;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0 0 10px 0;
+}
+
+.editform {
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+.editform .prjlabel {
+	font-size: 12px;
+	margin: 10px 0px;
+}
+
+.editform input {
+	font-size: 12px;
+}
+
+.editform input[type=text] {
+	width: 100px;
+	height: 20px;
+	padding: 3px;
+	margin: 0px 15px 10px 0;
+	border: 2px solid #E0E0E0;
+}
+
+.editform th {
+	color: #000000;
+	font-size: 14px;
+	padding: 5px 0;
+	margin: 0 0 10px 0;
+}
+
+.editform .button {
+  padding: 5px;
+  cursor: pointer;
+  margin: 10px 10px 0 0;
+}
+
+.editform .generate {
+  margin: 0px 10px 0 0;
+}
+
+.editform .report select {
+	padding: 5px 0;
+}
+
+.exttable table {
+	width: 100%;
+	text-align: left;
+}
+
+.brandtable table {
+	margin: 20px 0;
+}
+
+.brandtable table.large input[type=text] {
+  width: 100%;
+  text-align: left;
+}
+
+.brandtable table.small input[type=text] {
+  width: 50px;
+}
+
+.brandtable table.last {
+  margin-bottom: 10px;
+}
+
+.brandtable table.last select {
+	width: 120px;
+	height: 30px;
+  margin-bottom: 10px;
+}
+
+/******marked for removal******/
+.header {
+	margin: 0 6px;
+	height: 100px;
+	background: url(../images/banner.jpg) no-repeat;
+}
+
+/******marked for removal******/
+.header .logo a {
+	display: block;
+	width: 140px;
+	height: 100px;
+	color: #098fd6;
+	outline: none;
+	line-height: 2;
+	font-size: 24px;
+	overflow: hidden;
+	padding-left: 10px;
+	text-indent: -999px;
+}
+
+.wrap {
+	width: 1012px;
+	margin: auto;
+	background: #fff url(../images/bg_main.jpg) repeat-y;
+}
+
+/*********************************** glowtabs.css starts here. **************************/
+.glowingtabs {
+	border-bottom: 1px solid #789AAB;
+}
+
+.glowingtabs ul {
+	list-style-type: none;
+	margin: 0;
+	margin-left: 5px; /*Left offset of entire tab menu relative to page*/
+	padding: 0;
+}
+
+.glowingtabs li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+.glowingtabs a {
+	height: 27px;
+	float: left;
+	background: url(../images/glowtab-left.gif) no-repeat left top;
+	margin: 0;
+	margin-right: 5px; /*spacing between each tab*/
+	padding: 0 0 0 7px;
+	overflow: hidden;
+	text-decoration: none;
+	position: relative;
+	margin-bottom: -1px;
+}
+
+.glowingtabs a span {
+	float: left;
+	display: block;
+	background: url(../images/glowtab.gif) no-repeat right top;
+	padding: 5px 12px 9px 3px;
+	font-weight: bold;
+	color: #3B3B3B;
+}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+.glowingtabs a span {
+	float: none;
+}
+
+/* End IE5-Mac hack */
+.glowingtabs a:hover span {
+	color: #EA463F;
+}
+
+.glowingtabs a.current { /*Selected Tab style*/
+	background-position: 0 -27px;
+	/*Shift background image up to start of 2nd tab image*/
+}
+
+.glowingtabs a.current span { /*Selected Tab style*/
+	background-position: 100% -27px;
+	/*Shift background image up to start of 2nd tab image*/
+	color: black;
+}
+
+.glowingtabs a:hover { /*onMouseover style*/
+	background-position: 0% -27px;
+	/*Shift background image up to start of 2nd tab image*/
+}
+
+.glowingtabs a:hover span { /*onMouseover style*/
+	background-position: 100% -27px;
+	/*Shift background image up to start of 2nd tab image*/
+}
+
+/*********************************** glowtabs.css ends.. ********************************/
+/*********************************** marked for deletion ********************************/
+#main_menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#main_menu li {
+	float: left;
+	margin-right: 8px;
+}
+
+#main_menu li a {
+	color: #01679d;
+	display: block;
+	padding: 2px 5px;
+	font-weight: bold;
+}
+
+.login {
+	width: 100%;
+	height: 20px;
+	padding-top: 3px;
+	text-indent: 30px;
+	background-image: url(../image/login.jpg);
+	background-repeat: no-repeat;
+}
+
+.logo {
+	width: 18%;
+	height: 66px;
+	text-align: left; margin-left : 10px; padding-top : 10px;
+	background: url(../images/logo.jpg) no-repeat 0px 13px;
+	padding-top: 10px;
+	margin-left: 10px;
+}
+
+.welcome {
+	margin: auto;
+	color: #4c7398;
+	padding: 7px 0px;
+}
+
+.back-white {
+	background: #ffffff
+}
+
+.colContent {
+	padding: 5px;
+}
+
+.experttext {
+	width: 97%;
+	color: #4c7398;
+	padding-top: 6px;
+	font-weight: bold;
+	text-indent: 15px;
+}
+
+.myexpertlist {
+	background: #f2f0de;
+	color: #4c7398;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.colTitle {
+	padding: 7px;
+	color: #4C7398; 
+	font-size: 12px;
+	font-weight: bold;
+	background: #F3F0DF;
+}
+
+.producttext {
+	padding-top: 0px;
+	background: #fcfcf8;
+	padding-bottom: 10px;
+	border: 1px solid #eeebd3;
+}
+
+.bodyPart {
+	width: 100%;
+	padding-bottom: 10px;
+}
+
+.bodyPart .leftPart {
+	width: 190px;
+}
+
+.bodyPart .rightPart {
+	float: right;
+	width: 750px;
+}
+
+.text-blue-01 {
+	color: #006699;
+}
+
+.text-blue-01-bold {
+	color: #006699;
+}
+
+.text-blue-01-bold a {
+	color: #4C7398;
+}
+
+.back-menu {
+	background: url('../images/back_menu.gif') repeat-x;
+}

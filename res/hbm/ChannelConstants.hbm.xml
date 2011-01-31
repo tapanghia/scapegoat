@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.marklabs.utils.ChannelConstants" 
+    	table="channelconstants" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="period" type="integer"/>
+        <property name="constName"/>
+        <property name="supermarket" type="double"/>
+        <property name="generalStore" type="double"/>
+        <property name="kiranaStore" type="double"/>
+              
+     </class>
+</hibernate-mapping>

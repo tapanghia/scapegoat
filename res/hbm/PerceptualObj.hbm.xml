@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+     <class name="com.marklabs.perceptualObj.PerceptualObj" table="perceptualobj">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+		<property name="scale" />
+		<property name="dimension1" />
+		<property name="objective1" type="double"/>
+		<property name="dimension2" />
+		<property name="objective2" type="double"/>
+		
+		<many-to-one name="brand" class="com.marklabs.brands.Brand" 
+			column="brandId" not-null="true"/>
+     </class>
+</hibernate-mapping>
+
+
