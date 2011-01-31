@@ -128,7 +128,7 @@ function runReport() {
 					</select>
 					<%}%>
 					<%if(reportParametersList.contains("teamName")){ %>
-					<label>Team:</label>
+					<!--label>Team:</label-->
 					<input type="hidden" name="teamName" id="teamName" value="<%=teamName%>">
 					<%}%>
 					<%if(reportParametersList.contains("mdsXAxis")){ %>
