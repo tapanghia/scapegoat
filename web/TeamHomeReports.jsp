@@ -132,7 +132,7 @@ function runReport() {
 					<!--label>Team:</label-->
 					<input type="hidden" name="teamName" id="teamName" value="<%=teamName%>">
 					<%}%>
-					<%if(reportParametersList.contains("mdsXAxis")){ %>
+					<%if(reportParametersList.contains("mdsMapX")){ %>
 					<label>MDS X-Axis:</label>
 					<select id="mdsMapX" name="mdsMapX">
 						<option id="economy" value="economy" selected="selected">Economy</option>
@@ -140,7 +140,7 @@ function runReport() {
 						<option id="appeal" value="appeal">Appeal</option>
 					</select>
 					<%}%>
-					<%if(reportParametersList.contains("mdsYAxis")){ %>
+					<%if(reportParametersList.contains("mdsMapY")){ %>
 					<label>MDS Y-Axis</label>
 					<select id="mdsMapY" name="mdsMapY">
 						<option id="economy" value="economy" >Economy</option>
@@ -148,7 +148,7 @@ function runReport() {
 						<option id="appeal" value="appeal">Appeal</option>
 					</select>
 					<%}%>
-					<%if(reportParametersList.contains("semanticXAxis")){ %>
+					<%if(reportParametersList.contains("semanticMapX")){ %>
 					<label>Semantic X-Axis:</label>
 					<select id="semanticMapX" name="semanticMapX">
 						<option id="design" value="design" selected="selected">Design</option>
@@ -158,7 +158,7 @@ function runReport() {
 						<option id="safety" value="safety">Safety</option>
 					</select>
 					<%}%>
-					<%if(reportParametersList.contains("semanticYAxis")){ %>
+					<%if(reportParametersList.contains("semanticMapY")){ %>
 					<label>Semantic Y-Axis</label>
 					<select id="semanticMapY" name="semanticMapY">
 						<option id="design" value="design">Design</option>
