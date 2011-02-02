@@ -62,19 +62,20 @@ public class ResearchProjectMetadataService extends HibernateDaoSupport
 		
 		if (researchProjMetadata != null) {
 			design = (ResearchProjectConstants.DESIGN_CONSTANT_1 - ResearchProjectConstants.DESIGN_CONSTANT_2) * 
-					(researchProjMetadata.getDesign()/99) + ResearchProjectConstants.DESIGN_CONSTANT_2;
+					(((double)researchProjMetadata.getDesign())/99) + ResearchProjectConstants.DESIGN_CONSTANT_2;
 			fragrance = (ResearchProjectConstants.FRAGRANCE_CONSTANT_1 - ResearchProjectConstants.FRAGRANCE_CONSTANT_2) * 
-					(researchProjMetadata.getFragrance()/99) + ResearchProjectConstants.FRAGRANCE_CONSTANT_2;
+					(((double)researchProjMetadata.getFragrance())/99) + ResearchProjectConstants.FRAGRANCE_CONSTANT_2;
 			persistence = (ResearchProjectConstants.PERSISTENCE_CONSTANT_1 - ResearchProjectConstants.PERSISTENCE_CONSTANT_2) * 
-					(researchProjMetadata.getPersistence()/99) + ResearchProjectConstants.PERSISTENCE_CONSTANT_2;
+					(((double)researchProjMetadata.getPersistence())/99) + ResearchProjectConstants.PERSISTENCE_CONSTANT_2;
 			packaging = (ResearchProjectConstants.PACKAGING_CONSTANT_1 - ResearchProjectConstants.PACKAGING_CONSTANT_2) * 
-					(researchProjMetadata.getPackaging()/99) + ResearchProjectConstants.PACKAGING_CONSTANT_2;
+					(((double)researchProjMetadata.getPackaging())/99) + ResearchProjectConstants.PACKAGING_CONSTANT_2;
 			safety = (ResearchProjectConstants.SAFETY_CONSTANT_1 - ResearchProjectConstants.SAFETY_CONSTANT_2) * 
-					(researchProjMetadata.getSafety()/99) + ResearchProjectConstants.SAFETY_CONSTANT_2;
+					(((double)researchProjMetadata.getSafety())/99) + ResearchProjectConstants.SAFETY_CONSTANT_2;
+			
+			minimumBaseCost = Math.round(design + fragrance + persistence + packaging + safety);
+			
 		}
-		
-		minimumBaseCost = Math.round(design + fragrance + persistence + packaging + safety);
-		
+	
 		return minimumBaseCost;
 	}
 

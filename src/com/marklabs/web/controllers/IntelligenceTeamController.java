@@ -113,6 +113,10 @@ public class IntelligenceTeamController extends MultiActionController {
 					ReportTeamPurchaseMap thisReportTeamPurchaseMap = 
 						marketResearchStudiesService.getReportTeamPurchaseMap(team.getId(), reportId, (currentPeriod+1));
 					
+					if (thisReportTeamPurchaseMap == null)
+						System.out.println("reportTeamPurchaseMap is null for reportId: "+reportId + ", teamId: " 
+								+ team.getId() + " and period: " + (currentPeriod + 1));
+					
 					thisReportTeamPurchaseMap.setAccessFlag(DeleteFlag.DELETEFLAG_YES.getDeletFlag());
 					marketResearchStudiesService.updateReportTeamPurchaseMap(thisReportTeamPurchaseMap);
 				}
