@@ -8,9 +8,9 @@
         <id name="id" >
             <generator class="identity"/>
         </id>
-        <property name="supermarket_amo" type="double"/>
-        <property name="generalStore_amo" type="double"/>
-        <property name="kiranaStore_amo" type="double"/>
+        <property name="supermarket_amo" type="int"/>
+        <property name="generalStore_amo" type="int"/>
+        <property name="kiranaStore_amo" type="int"/>
        
      </class>
 </hibernate-mapping>

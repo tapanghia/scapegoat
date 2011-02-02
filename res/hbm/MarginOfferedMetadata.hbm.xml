@@ -9,9 +9,9 @@
             <generator class="identity"/>
         </id>
         <property name="brandName"/>
-        <property name="supermarket_mo" type="double"/>
-        <property name="generalStore_mo" type="double"/>
-        <property name="kiranaStore_mo" type="double"/>
+        <property name="supermarket_mo" type="long"/>
+        <property name="generalStore_mo" type="long"/>
+        <property name="kiranaStore_mo" type="long"/>
              
      </class>
 </hibernate-mapping>

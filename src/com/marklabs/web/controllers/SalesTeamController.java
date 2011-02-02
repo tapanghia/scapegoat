@@ -169,7 +169,7 @@ public class SalesTeamController extends MultiActionController {
 				if (brandMarginOfferedContents!= null && brandMarginOfferedContents.length == 3) {
 					long brandId = Long.parseLong(brandMarginOfferedContents[0]);
 					String typeMarginOffered = brandMarginOfferedContents[1];
-					double marginOfferedValue = Double.parseDouble(brandMarginOfferedContents[2]);
+					long marginOfferedValue = Long.parseLong(brandMarginOfferedContents[2]);
 					
 					// adding data to maps
 					Brand brand = brandService.getBrandonId(brandId);
@@ -263,9 +263,9 @@ public class SalesTeamController extends MultiActionController {
 			if (entry.getValue() != null) {
 				SalesForcePercentage salesForcePercentage = new SalesForcePercentage();
 				salesForcePercentage.setBrand(entry.getKey());
-				salesForcePercentage.setSuperMarketPercentage(((entry.getValue().getSupermarket_sf()/superMarketSalesForce)*100));
-				salesForcePercentage.setGenStorePercentage(((entry.getValue().getGeneralStore_sf()/generalStoreSalesForce)*100));
-				salesForcePercentage.setKiranaStorePercentage(((entry.getValue().getKiranaStore_sf()/kiranaStoreSalesForce)*100));
+				salesForcePercentage.setSuperMarketPercentage(Math.round((entry.getValue().getSupermarket_sf()/superMarketSalesForce)*100));
+				salesForcePercentage.setGenStorePercentage(Math.round((entry.getValue().getGeneralStore_sf()/generalStoreSalesForce)*100));
+				salesForcePercentage.setKiranaStorePercentage(Math.round((entry.getValue().getKiranaStore_sf()/kiranaStoreSalesForce)*100));
 				
 				brandSalesForcePercentageMap.put(entry.getKey(), salesForcePercentage);
 			}
@@ -324,9 +324,9 @@ public class SalesTeamController extends MultiActionController {
 		
 			SalesForcePercentage salesForcePercentage = new SalesForcePercentage();
 			salesForcePercentage.setBrand(entry.getKey());
-			salesForcePercentage.setSuperMarketPercentage((entry.getValue().getSupermarket_sf()/superMarketSalesForce)*100);
-			salesForcePercentage.setGenStorePercentage((entry.getValue().getGeneralStore_sf()/generalStoreSalesForce)*100);
-			salesForcePercentage.setKiranaStorePercentage((entry.getValue().getKiranaStore_sf()/kiranaStoreSalesForce)*100);
+			salesForcePercentage.setSuperMarketPercentage(Math.round((entry.getValue().getSupermarket_sf()/superMarketSalesForce)*100));
+			salesForcePercentage.setGenStorePercentage(Math.round((entry.getValue().getGeneralStore_sf()/generalStoreSalesForce)*100));
+			salesForcePercentage.setKiranaStorePercentage(Math.round((entry.getValue().getKiranaStore_sf()/kiranaStoreSalesForce)*100));
 			
 			brandSalesForcePercentageMap.put(entry.getKey(), salesForcePercentage);
 			

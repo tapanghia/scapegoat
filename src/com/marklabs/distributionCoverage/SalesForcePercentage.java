@@ -5,9 +5,9 @@ import com.marklabs.brands.Brand;
 public class SalesForcePercentage {
 
 	private Brand brand;
-	private double superMarketPercentage;
-	private double genStorePercentage;
-	private double kiranaStorePercentage;
+	private long superMarketPercentage;
+	private long genStorePercentage;
+	private long kiranaStorePercentage;
 
 	public Brand getBrand() {
 		return brand;
@@ -17,27 +17,27 @@ public class SalesForcePercentage {
 		this.brand = brand;
 	}
 
-	public double getSuperMarketPercentage() {
+	public long getSuperMarketPercentage() {
 		return superMarketPercentage;
 	}
 
-	public void setSuperMarketPercentage(double superMarketPercentage) {
+	public void setSuperMarketPercentage(long superMarketPercentage) {
 		this.superMarketPercentage = superMarketPercentage;
 	}
 
-	public double getGenStorePercentage() {
+	public long getGenStorePercentage() {
 		return genStorePercentage;
 	}
 
-	public void setGenStorePercentage(double genStorePercentage) {
+	public void setGenStorePercentage(long genStorePercentage) {
 		this.genStorePercentage = genStorePercentage;
 	}
 
-	public double getKiranaStorePercentage() {
+	public long getKiranaStorePercentage() {
 		return kiranaStorePercentage;
 	}
 
-	public void setKiranaStorePercentage(double kiranaStorePercentage) {
+	public void setKiranaStorePercentage(long kiranaStorePercentage) {
 		this.kiranaStorePercentage = kiranaStorePercentage;
 	}
 
