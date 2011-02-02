@@ -123,7 +123,7 @@ function runReport() {
 					<%if(reportParametersList.contains("period")){ %>
 					<label>Period:</label>
 					<select id="period" name="period">
-						<% for (int i = currentPeriod; i >= 0; i-- ){%>
+						<% for (int i = (currentPeriod - 1); i >= 0; i-- ){%>
 							<option id="<%=i %>" value="<%=i %>" <%if (i == currentPeriod) { %>selected="selected" <%} %>><%=i %></option>
 						<%}%>
 					</select>

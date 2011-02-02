@@ -93,7 +93,7 @@ public class ReportsViewerController extends AbstractController{
 		int reportRunPeriod = request.getParameter("period") != null && 
 			!("".equals(request.getParameter("period")))?Integer.parseInt(request.getParameter("period")):currentPeriod - 1;
 		
-		boolean isReportAccessible = marketResearchStudiesService.getReportAccessForTeamAndPeriod(loggedInTeam, reportRunPeriod, reportName);
+		boolean isReportAccessible = marketResearchStudiesService.getReportAccessForTeamAndPeriod(loggedInTeam, (reportRunPeriod + 1), reportName);
 		
 		
 		if ((ActionKeys.EXPORT_XLS.equals(action)
