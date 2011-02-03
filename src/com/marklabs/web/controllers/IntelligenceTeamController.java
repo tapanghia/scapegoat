@@ -89,8 +89,8 @@ public class IntelligenceTeamController extends MultiActionController {
 		
 		// Now calculating the reports purchase cost after decides to edit his reports purchase
 		if (checkedReportIds != null && !("".equals(checkedReportIds))) {
-			checkedReportIds = checkedReportIds.substring(0, checkedReportIds.length() - 1);
-			String[] reportIds = checkedReportIds.split(",");
+			String testCheckedReportIds = checkedReportIds.substring(0, checkedReportIds.length() - 1);
+			String[] reportIds = testCheckedReportIds.split(",");
 			
 			for (String reportIdStr:reportIds) {
 				long reportId = Long.parseLong(reportIdStr);

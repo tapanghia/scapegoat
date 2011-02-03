@@ -405,7 +405,7 @@ co = teamName.substring(0,1);
 					</div>
 					<div class="colx3-center">
 						<span class="label"></span>	
-						<input type="text" id="minBaseCost" name="minBaseCost" class="past" disabled>
+						<input type="text" id="minBaseCost" name="minBaseCost" class="past" readonly>
 					</div>
 					<div class="colx3-right">
 						<span class="label"></span>
