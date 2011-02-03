@@ -150,8 +150,9 @@ public class BrandManagementController extends MultiActionController{
 				long projId = Long.parseLong(projInf);
 				ResearchProject baseProject = researchProjectService.getResearcProjectByID(projId);
 				if (baseProject != null) {
+					brandInf = (team.getTeamName()).substring(0, 1) + brandInf;
 					Brand newBrand = new Brand();
-					newBrand.setBrandName(brandInf);
+					newBrand.setBrandName(brandInf.toUpperCase());
 					newBrand.setResearchProject(baseProject);
 					newBrand.setDeleteFlag(DeleteFlag.DELETEFLAG_NO.getDeletFlag());
 					newBrand.setPeriod((Integer)(session.getAttribute(Constants.CURRENT_PERIOD)));

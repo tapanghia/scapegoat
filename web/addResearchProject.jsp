@@ -266,7 +266,8 @@ function SetSliderValue(sliderId, textBoxControl) {
 
 		
 		<section class="grid_9">
-			<div class="block-border"><form class="block-content form" id="addResearchProjForm" name="addResearchProjForm" method="post" action="researchProject.htm?do=saveResearchProject">
+			<div class="block-border"><form class="block-content form" id="addResearchProjForm" name="addResearchProjForm" method="post" 
+				action="researchProject.htm?do=saveResearchProject">
 				<h1>New Project</h1>
 				
 				<div class="columns">

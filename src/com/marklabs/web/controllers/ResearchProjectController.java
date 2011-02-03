@@ -281,8 +281,10 @@ public class ResearchProjectController extends MultiActionController {
 		
 		Team loggedInTeam = (Team)request.getSession().getAttribute(Constants.TEAM_OBJECT);
 		int currentPeriod = ((Integer) request.getSession().getAttribute(Constants.CURRENT_PERIOD)).intValue();
+		projectName = (loggedInTeam.getTeamName()).substring(0, 1) + "R" + projectName;
 		
-		researchProject.setProjectName(projectName);
+		
+		researchProject.setProjectName(projectName.toUpperCase());
 		researchProject.setDesign(designValue);
 		researchProject.setFragrance(fragranceValue);
 		researchProject.setPersistence(persistenceValue);
