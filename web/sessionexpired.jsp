@@ -52,8 +52,9 @@
 	
 	<!-- Server status -->
 	<header><div class="container_12">
-<div class="server-info2"><a href="login.htm?do=logout" class="button red" title="Logout">Logout</a> | <a href="changepassword.html" class="button red" title="Change Password">Change Password</a></div>
-<div class="server-info"><img src="images/logo1.jpg"></div>
+		<!-- div class="server-info2"><a href="login.htm?do=logout" class="button red" title="Logout">Logout</a> | <a href="changepassword.html" 
+			class="button red" title="Change Password">Change Password</a></div>
+		<div class="server-info"><img src="images/logo1.jpg"></div-->
 
 		
 	</div></header>

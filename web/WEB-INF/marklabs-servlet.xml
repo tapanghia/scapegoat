@@ -117,6 +117,12 @@
         <property name="username" value="db.username"/>
         <property name="password" value="db.password"/>
     </bean>
+    
+    <bean id="DBUtil" class="com.marklabs.utils.DBUtil" factory-method="getInstance">
+    <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+  	</bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean" 
     depends-on="dataSource">

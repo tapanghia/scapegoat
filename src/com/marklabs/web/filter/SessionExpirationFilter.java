@@ -36,6 +36,8 @@ public class SessionExpirationFilter implements Filter {
         //TODO : Implement regular expression mapping instead of indexOf
         if (excludePages.indexOf(servletPath) == -1
                 && (session == null || session.getAttribute(Constants.TEAM_ID) == null)) {
+        	
+        	if (session != null) session.invalidate();
             httpServletResponse.sendRedirect(errorPage);
         } else {
             filterChain.doFilter(request, response);

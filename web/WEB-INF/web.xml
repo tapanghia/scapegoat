@@ -47,6 +47,27 @@
 	    <filter-name>sessionExpirationFilter</filter-name>
 	    <url-pattern>*.htm</url-pattern>
   	</filter-mapping>
+  	
+  	<filter>
+	    <filter-name>transitionInitializeLogoutFilter</filter-name>
+		<description>This Filter redirects the user to an error page on session expiration</description>
+		<filter-class>com.marklabs.web.filter.TransitionInitializeLogoutFilter</filter-class>
+	    <init-param>
+	        <param-name>errorPage</param-name>
+	        <param-value>sessionexpired.jsp</param-value>
+	        <description>Page to show when session expires</description>
+	    </init-param>
+	    <init-param>
+	        <param-name>excludePages</param-name>
+	        <param-value>/login.htm</param-value>
+	        <description>Page to exclude from the filter</description>
+	    </init-param>
+  	</filter>
+  	
+  	<filter-mapping>
+	    <filter-name>transitionInitializeLogoutFilter</filter-name>
+	    <url-pattern>*.htm</url-pattern>
+  	</filter-mapping>
 	
 	<!-- UTF-8 charcter encoding -->
   	<filter> 
