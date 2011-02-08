@@ -692,6 +692,11 @@ function SetSliderValue(sliderId, textBoxControl) {
           		thisBrandPerceptualObj.getDimension1().equalsIgnoreCase(SemanticScale.SAFETY.getSemanticScale())) {
 	          %> selected
 	          <%}%>>Safety</option>
+	          <option id="1" value="price"
+              <% if (thisBrandPerceptualObj != null && 
+          		thisBrandPerceptualObj.getDimension1().equalsIgnoreCase(SemanticScale.PRICE.getSemanticScale())) {
+	          %> selected
+	          <%}%>>Price</option>
             </select>	
 					</div>
 					<div class="colx5-center2">
@@ -725,6 +730,11 @@ function SetSliderValue(sliderId, textBoxControl) {
           		thisBrandPerceptualObj.getDimension2().equalsIgnoreCase(SemanticScale.SAFETY.getSemanticScale())) {
 	          %> selected
 	          <%}%>>Safety</option>
+	          <option id="1" value="price"
+              <% if (thisBrandPerceptualObj != null && 
+          		thisBrandPerceptualObj.getDimension2().equalsIgnoreCase(SemanticScale.PRICE.getSemanticScale())) {
+	          %> selected
+	          <%}%>>Price</option>
             </select>	
 					</div>
 					<div class="colx5-right">

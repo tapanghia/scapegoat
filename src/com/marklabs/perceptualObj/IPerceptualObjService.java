@@ -10,4 +10,6 @@ public interface IPerceptualObjService {
 	
 	public void savePerceptualObj(PerceptualObj perceptualObj);
 	
+	public void deletePerceptualObj(PerceptualObj perceptualObj);
+	
 }

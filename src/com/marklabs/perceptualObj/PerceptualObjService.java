@@ -28,6 +28,13 @@ public class PerceptualObjService extends HibernateDaoSupport
 		getHibernateTemplate().save(perceptualObj);
 		
 	}
+
+	@Override
+	public void deletePerceptualObj(PerceptualObj perceptualObj) {
+		if (perceptualObj != null)
+			getHibernateTemplate().delete(perceptualObj);
+		
+	}
 	
 	
 	

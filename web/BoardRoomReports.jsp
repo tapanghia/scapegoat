@@ -156,6 +156,7 @@ function runReport() {
 						<option id="persistence" value="persistence">Persistence</option>
 						<option id="packaging" value="packaging" >Packaging</option>
 						<option id="safety" value="safety">Safety</option>
+						<option id="price" value="price">Price</option>
 					</select>
 					<%}%>
 					<%if(reportParametersList.contains("semanticMapY")){ %>
@@ -166,6 +167,7 @@ function runReport() {
 						<option id="persistence" value="persistence">Persistence</option>
 						<option id="packaging" value="packaging" >Packaging</option>
 						<option id="safety" value="safety">Safety</option>
+						<option id="price" value="price">Price</option>
 					</select>
 					<%}%>
 					<input type="button" class="button generate" value="Generate" onClick="runReport()" /></td>

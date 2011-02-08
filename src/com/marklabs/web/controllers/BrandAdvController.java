@@ -246,6 +246,11 @@ public class BrandAdvController extends MultiActionController{
 								PerceptualObjectiveScales.MDS_DIMENSION.getPerceptualObjScale()); 
 					}
 				}
+				else if (perceptualObjSelected.equalsIgnoreCase("noObjective")) {
+					if ((Brand)request.getSession().getAttribute(Constants.SELECTED_BRAND_ADV) != null) {
+							deleteExisitingPerceptualObjective((Brand)request.getSession().getAttribute(Constants.SELECTED_BRAND_ADV));
+					}
+				}
 				
 				request.getSession().removeAttribute(Constants.THISPERIOD_BRANDADV);
 				request.getSession().setAttribute(Constants.THISPERIOD_BRANDADV, thisPeriodBrandAdv);
@@ -273,18 +278,27 @@ public class BrandAdvController extends MultiActionController{
 		return null;
 	}
 
+	private void deleteExisitingPerceptualObjective(Brand thisBrand) {
+		// checking if an entry for this brand exists in Perceptual Objective table
+		PerceptualObj savedBrandPerceptualObj = perceptualObjService.getPerceptualObjInputForBrand(thisBrand);
+		
+		if (savedBrandPerceptualObj != null) { 
+			perceptualObjService.deletePerceptualObj(savedBrandPerceptualObj);
+		}
+		
+	}
+	
 	private PerceptualObj addPerceptualObj(Brand thisBrand,
 			String perceptualObjScaleDim1, String perceptualObjScaleDim1Obj,String perceptualObjScaleDim2, 
 			String perceptualObjScaleDim2Obj, String perceptualObjScale) {
 
-		PerceptualObj thisBrandPerceptualObj;
-		boolean toSave = false;
+		PerceptualObj thisBrandPerceptualObj = new PerceptualObj();
 		
 		// checking if an entry for this brand exists in Perceptual Objective table
-		thisBrandPerceptualObj = perceptualObjService.getPerceptualObjInputForBrand(thisBrand);
-		if (thisBrandPerceptualObj == null) { 
-			toSave = true;
-			thisBrandPerceptualObj = new PerceptualObj();
+		PerceptualObj savedBrandPerceptualObj = perceptualObjService.getPerceptualObjInputForBrand(thisBrand);
+		
+		if (savedBrandPerceptualObj != null) { 
+			perceptualObjService.deletePerceptualObj(savedBrandPerceptualObj);
 		}
 		thisBrandPerceptualObj.setBrand(thisBrand);
 		thisBrandPerceptualObj.setScale(perceptualObjScale);
@@ -304,6 +318,9 @@ public class BrandAdvController extends MultiActionController{
 		}
 		else if (perceptualObjScaleDim1.equalsIgnoreCase(SemanticScale.SAFETY.getSemanticScale())) {
 			thisBrandPerceptualObj.setDimension1(SemanticScale.SAFETY.getSemanticScale());
+		}
+		else if (perceptualObjScaleDim1.equalsIgnoreCase(SemanticScale.PRICE.getSemanticScale())) {
+			thisBrandPerceptualObj.setDimension1(SemanticScale.PRICE.getSemanticScale());
 		}
 		else if (perceptualObjScaleDim1.equalsIgnoreCase(MDSDimension.APPEAL.getMDSDimension())) {
 			thisBrandPerceptualObj.setDimension1(MDSDimension.APPEAL.getMDSDimension());
@@ -335,6 +352,9 @@ public class BrandAdvController extends MultiActionController{
 		else if (perceptualObjScaleDim2.equalsIgnoreCase(SemanticScale.SAFETY.getSemanticScale())) {
 			thisBrandPerceptualObj.setDimension2(SemanticScale.SAFETY.getSemanticScale());
 		}
+		else if (perceptualObjScaleDim2.equalsIgnoreCase(SemanticScale.PRICE.getSemanticScale())) {
+			thisBrandPerceptualObj.setDimension2(SemanticScale.PRICE.getSemanticScale());
+		}
 		else if (perceptualObjScaleDim2.equalsIgnoreCase(MDSDimension.APPEAL.getMDSDimension())) {
 			thisBrandPerceptualObj.setDimension2(MDSDimension.APPEAL.getMDSDimension());
 		}
@@ -350,10 +370,7 @@ public class BrandAdvController extends MultiActionController{
 			thisBrandPerceptualObj.setObjective2(dimensionObj);
 		}
 
-		if (toSave == true)
-			perceptualObjService.savePerceptualObj(thisBrandPerceptualObj);
-		else
-			perceptualObjService.saveOrUpdatePerceptualObj(thisBrandPerceptualObj);
+		perceptualObjService.savePerceptualObj(thisBrandPerceptualObj);
 		
 		return thisBrandPerceptualObj;
 	}

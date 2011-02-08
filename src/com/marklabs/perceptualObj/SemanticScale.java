@@ -2,11 +2,12 @@ package com.marklabs.perceptualObj;
 
 public enum SemanticScale {
 
-	DESIGN("packaging"),
+	DESIGN("design"),
 	FRAGRANCE("fragrance"),
 	PERSISTENCE("persistence"),
 	PACKAGING("packaging"),
-	SAFETY("safety");
+	SAFETY("safety"),
+	PRICE("price");
 	
 	private String semanticScale;
 	
