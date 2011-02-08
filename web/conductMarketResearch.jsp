@@ -18,13 +18,24 @@ $(document).ready(function(){
     
     var selectedReportIds = ''; 
     var unSelectedReportIds = '';
-    for (var i =0; i< marketResearchIframeForm.isReportSelected.length; i++) {
-      if (marketResearchIframeForm.isReportSelected[i].checked) {
-        selectedReportIds = selectedReportIds + marketResearchIframeForm.isReportSelected[i].value + ',';
-      } else {
-        unSelectedReportIds = unSelectedReportIds + marketResearchIframeForm.isReportSelected[i].value + ',';
-      }
+    if (marketResearchIframeForm.isReportSelected.length != undefined) {
+	    for (var i =0; i< marketResearchIframeForm.isReportSelected.length; i++) {
+	      if (marketResearchIframeForm.isReportSelected[i].checked) {
+	        selectedReportIds = selectedReportIds + marketResearchIframeForm.isReportSelected[i].value + ',';
+	      } else {
+	        unSelectedReportIds = unSelectedReportIds + marketResearchIframeForm.isReportSelected[i].value + ',';
+	      }
+	    }
     }
+    else {
+    	// Checkbox length is undefined, means the number of checkboxes in this page is only 1
+    	if (marketResearchIframeForm.isReportSelected.checked) {
+    		selectedReportIds = selectedReportIds + marketResearchIframeForm.isReportSelected.value + ',';
+    	} else {
+    		unSelectedReportIds = unSelectedReportIds + marketResearchIframeForm.isReportSelected.value + ',';
+    	}
+     }
+ 
     thisForm.checkedReportIds.value = selectedReportIds;
     thisForm.unCheckedReportIds.value = unSelectedReportIds;
     thisForm.submit();

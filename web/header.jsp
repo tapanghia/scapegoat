@@ -108,7 +108,7 @@
 			<li class="users <%= (currentLink.equalsIgnoreCase("intelligence"))?"current":"" %>"><a href="intelligenceTeam.htm" title="Intelligence Team">IntelligenceTeam</a>
 				<ul>
 					<li><a href="intelligenceTeam.htm" title="Intelligence Team">Intelligence Team</a></li>
-					<li><a href="intelligenceTeam.htm?do=conductMarketResearch" title="Conduct Market Research">Conduct Market Research</a></li>
+					<li><a href="intelligenceTeam.htm?do=displayMarketResearch" title="Conduct Market Research">Conduct Market Research</a></li>
 				</ul>
 			</li>
 			<li class="stats <%= (currentLink.equalsIgnoreCase("boardroom"))?"current":"" %>"><a href="boardRoom.htm" title="Board Room">BoardRoom</a>

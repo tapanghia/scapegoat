@@ -59,6 +59,23 @@ public class IntelligenceTeamController extends MultiActionController {
 		return mav;
 	}
 	
+	public ModelAndView displayMarketResearch(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView("conductMarketResearch");
+		
+		Team team = (Team) request.getSession().getAttribute(Constants.TEAM_OBJECT);
+		int currentPeriod = (Integer) request.getSession().getAttribute(Constants.CURRENT_PERIOD);
+		
+		// Fetching the Report Team purchase Listing from Database to display on the Market Research 
+		List<ReportTeamPurchaseMap> reportTeamPurchaseList = 
+			marketResearchStudiesService.getReportsAccessForTeamAndPeriod(team, (currentPeriod + 1));
+					
+		mav.addObject(Constants.REPORT_TEAM_PURCHASE_MAP_LISTING, reportTeamPurchaseList);
+		
+		
+		return mav;
+		
+	}
+	
 	public ModelAndView conductMarketResearch(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView("conductMarketResearch");
 		
