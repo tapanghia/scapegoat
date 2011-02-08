@@ -139,7 +139,7 @@ public class ResearchProjectController extends MultiActionController {
 		long teamId = Long.parseLong((String)session.getAttribute(Constants.TEAM_ID));
 		int currentPeriod = ((Integer) session.getAttribute(Constants.CURRENT_PERIOD)).intValue();
 		ResearchProject []previousPeriodProj = 
-			researchProjectService.getResearchProjForTeamPreviousPeriod(teamId, currentPeriod);
+			researchProjectService.getCompletedResearchProjectsForTeam(teamId, currentPeriod);
 		
 		mav.addObject(Constants.PREVIOUS_PERIOD_RESEARCH_PROJECTS, previousPeriodProj);
 			

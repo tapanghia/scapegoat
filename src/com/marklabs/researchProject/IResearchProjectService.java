@@ -28,6 +28,16 @@ public interface IResearchProjectService {
 	public ResearchProject[] getResearchProjForTeamByProjFinishPeriod(long teamId, int projFinishPeriod);
 	
 	/**
+	 * Use this function in the following scenario :
+	 * 		Will return transitioned research projects in current period which have been completed before current period
+	 * 
+	 * @param teamId
+	 * @param currentPeriod
+	 * @return
+	 */
+	public ResearchProject[] getCompletedResearchProjectsForTeam(long teamId, int currentPeriod);
+	
+	/**
 	 * This function returns all projects created by a team in the previous period for populating the 
 	 * 		Research Project Specifications page, while creating a new Project
 	 * @param team
