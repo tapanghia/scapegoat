@@ -257,7 +257,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format($F{general})) : (new DecimalFormat("###0.0").format($F{supermarket})) + " %"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format($F{general})) : (new DecimalFormat("###0.0").format($F{general})) + " %"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -270,7 +270,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format($F{kirana})) : (new DecimalFormat("###0.0").format($F{supermarket})) + " %"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format($F{kirana})) : (new DecimalFormat("###0.0").format($F{kirana})) + " %"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -283,7 +283,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format($F{total})) : (new DecimalFormat("###0.0").format($F{supermarket})) + " %"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{team}.equalsIgnoreCase("Total Sales(units)")? (new DecimalFormat("###0").format($F{total})) : (new DecimalFormat("###0.0").format($F{total})) + " %"]]></textFieldExpression>
 				</textField>
 				<line direction="TopDown">
 					<reportElement
