@@ -26,15 +26,15 @@
 	<parameter name="period" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
 	</parameter>
-	<queryString><![CDATA[select * from rep_competitive_margin WHERE period = $P{period}]]></queryString>
+	<queryString><![CDATA[select id, period, team, brand, (supermarket * 100) as supermarket, (general*100) as general, (kirana*100) as kirana from rep_competitive_margin WHERE period = $P{period}]]></queryString>
 
 	<field name="id" class="java.lang.Integer"/>
 	<field name="period" class="java.lang.Integer"/>
 	<field name="team" class="java.lang.String"/>
 	<field name="brand" class="java.lang.String"/>
-	<field name="supermarket" class="java.lang.Float"/>
-	<field name="general" class="java.lang.Float"/>
-	<field name="kirana" class="java.lang.Float"/>
+	<field name="supermarket" class="java.lang.Double"/>
+	<field name="general" class="java.lang.Double"/>
+	<field name="kirana" class="java.lang.Double"/>
 
 
 		<group  name="Team" >
@@ -214,7 +214,7 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{brand}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="80"
 						y="0"
@@ -225,9 +225,9 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.Float"><![CDATA[$F{supermarket}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[new DecimalFormat("###0").format($F{supermarket}) + "%"]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="210"
 						y="0"
@@ -238,9 +238,9 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.Float"><![CDATA[$F{general}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[new DecimalFormat("###0").format($F{general}) + "%"]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="370"
 						y="0"
@@ -251,7 +251,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.Float"><![CDATA[$F{kirana}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[new DecimalFormat("###0").format($F{kirana}) + "%"]]></textFieldExpression>
 				</textField>
 				<line direction="TopDown">
 					<reportElement
